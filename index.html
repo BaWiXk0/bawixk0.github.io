@@ -1,1 +1,53 @@
-TOTOK
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RAMROD Encryptor/Decryptor</title>
+    <link rel="stylesheet" href="/style.css">
+  <script type="module" crossorigin src="/assets/index-CT3SQaTB.js"></script>
+</head>
+<body>
+<h1>RAMROD Encryptor/Decryptor</h1>
+
+<div id="randomWordsContainer"></div>
+<button id="newWordsBtn">Generate New Words</button>
+<br>
+<hr>
+<br>
+<label for="keyword">Keyword:</label>
+<input type="text" id="keyword" value="CHAINSMOKE">
+<label for="number">Number or Code:</label>
+<input type="text" id="number" placeholder="Enter number or code">
+<br>
+<hr>
+<br>
+
+<div id="result"></div>
+<div id="natoResult"></div>
+
+<br>
+<hr>
+<br>
+<h3>Edit Dictionary:</h3>
+<label for="slovnikTextArea"></label>Dictionary:<textarea id="slovnikTextArea" rows="10" cols="50"></textarea>
+
+<button id="updateSlovnikBtn">Update Dictionary</button>
+
+<br>
+<hr>
+<br>
+
+<label for="lightnessSlider">Lightness (L):</label>
+<input type="range" id="lightnessSlider" min="0" max="100" value="10">
+<br>
+<label for="chromaSlider">Chroma (C):</label>
+<input type="range" id="chromaSlider" min="0" max="1" step="0.01" value="0.3">
+<br>
+<label for="hueSlider">Hue (H):</label>
+<input type="range" id="hueSlider" min="0" max="360" value="180">
+<br>
+
+</body>
+</html>
