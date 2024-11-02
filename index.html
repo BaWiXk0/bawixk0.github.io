@@ -4,16 +4,23 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Encryptor/Decryptor</title>
-    <link rel="stylesheet" href="/style.css">
-  <script type="module" crossorigin src="/assets/index-DS7U4eGl.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-CqE_DWnR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-ByCO5Qvz.css">
 </head>
+
 <body>
 <header>
     <h1>Encryptor/Decryptor</h1>
 </header>
 
 <!-- RAMROD -->
-<section class="encryption-section">
+<div class="section-toggle-container">
+    <button class="toggle-button" onclick="toggleSection('ramrodSection', 'ramrodIcon')">
+        RAMROD šifra <span id="ramrodIcon" class="material-icons toggle-icon">visibility_off</span>
+    </button>
+</div>
+<section id="ramrodSection" class="encryption-section">
     <h2>RAMROD šifra</h2>
     <div class="input-group">
         <label for="keyword">Kľúčové slovo:</label>
@@ -29,7 +36,12 @@
 <hr>
 
 <!-- Caesarova šifra -->
-<section class="encryption-section">
+<div class="section-toggle-container">
+    <button class="toggle-button" onclick="toggleSection('caesarSection', 'caesarIcon')">
+        Caesarova šifra <span id="caesarIcon" class="material-icons toggle-icon">visibility_off</span>
+    </button>
+</div>
+<section id="caesarSection" class="encryption-section">
     <h2>Caesarova šifra</h2>
     <div class="input-group">
         <label for="caesarShift">Posun:</label>
@@ -40,6 +52,7 @@
             <label for="caesarText">Šifrujem:</label>
             <input type="text" id="caesarText" placeholder="Zadajte text na zašifrovanie">
             <div id="caesarEncryptedResult"></div>
+            <div id="natoCaesarEncryptedResult"></div>
         </div>
         <div class="decrypt-group">
             <label for="caesarTextDecrypt">Dešifrujem:</label>
@@ -51,7 +64,12 @@
 <hr>
 
 <!-- Vigenèrova šifra -->
-<section class="encryption-section">
+<div class="section-toggle-container">
+    <button class="toggle-button" onclick="toggleSection('vigenereSection', 'vigenereIcon')">
+        Vigenèrova šifra <span id="vigenereIcon" class="material-icons toggle-icon">visibility_off</span>
+    </button>
+</div>
+<section id="vigenereSection" class="encryption-section">
     <h2>Vigenèrova šifra</h2>
     <div class="input-group">
         <label for="vigenereKey">Kľúč:</label>
@@ -62,6 +80,7 @@
             <label for="vigenereText">Šifrujem:</label>
             <input type="text" id="vigenereText" placeholder="Zadajte text na zašifrovanie">
             <div id="vigenereEncryptedResult"></div>
+            <div id="natoVigenereEncryptedResult"></div>
         </div>
         <div class="decrypt-group">
             <label for="vigenereTextDecrypt">Dešifrujem:</label>
@@ -73,7 +92,12 @@
 <hr>
 
 <!-- Morseova šifra -->
-<section class="encryption-section">
+<div class="section-toggle-container">
+    <button class="toggle-button" onclick="toggleSection('morseSection', 'morseIcon')">
+        Morseova šifra <span id="morseIcon" class="material-icons toggle-icon">visibility_off</span>
+    </button>
+</div>
+<section id="morseSection" class="encryption-section">
     <h2>Morseova šifra</h2>
     <div class="flex-container">
         <div class="encrypt-group">
@@ -85,6 +109,33 @@
             <label for="morseCode">Dešifrujem:</label>
             <input type="text" id="morseCode" placeholder="Zadajte Morseov kód na dešifrovanie">
             <div id="morseDecryptedResult"></div>
+        </div>
+    </div>
+</section>
+<hr>
+
+<!-- Playfair šifra -->
+<div class="section-toggle-container">
+    <button class="toggle-button" onclick="toggleSection('playfairSection', 'playfairIcon')">
+        Playfair šifra <span id="playfairIcon" class="material-icons toggle-icon">visibility_off</span>
+    </button>
+</div>
+<section id="playfairSection" class="encryption-section">
+    <h2>Playfair šifra</h2>
+    <div class="input-group">
+        <label for="playfairKey">Kľúč:</label>
+        <input type="text" id="playfairKey" placeholder="Zadajte kľúč">
+    </div>
+    <div class="flex-container">
+        <div class="encrypt-group">
+            <label for="playfairText">Šifrujem:</label>
+            <input type="text" id="playfairText" placeholder="Zadajte text na zašifrovanie">
+            <div id="playfairEncryptedResult"></div>
+        </div>
+        <div class="decrypt-group">
+            <label for="playfairTextDecrypt">Dešifrujem:</label>
+            <input type="text" id="playfairTextDecrypt" placeholder="Zadajte text na dešifrovanie">
+            <div id="playfairDecryptedResult"></div>
         </div>
     </div>
 </section>
@@ -105,10 +156,11 @@
 
 <!-- Farba -->
 <section class="color-section">
-    <h3>Farba</h3>
+    <h3>Farby</h3>
+    Primary:
     <div class="slider-group">
         <label for="lightnessSlider">Lightness (L):</label>
-        <input type="range" id="lightnessSlider" min="0" max="100" value="10">
+        <input type="range" id="lightnessSlider" min="0" max="100" value="80">
     </div>
     <div class="slider-group">
         <label for="chromaSlider">Chroma (C):</label>
@@ -116,14 +168,13 @@
     </div>
     <div class="slider-group">
         <label for="hueSlider">Hue (H):</label>
-        <input type="range" id="hueSlider" min="0" max="360" value="180">
+        <input type="range" id="hueSlider" min="0" max="360" value="360">
     </div>
 </section>
 
 <footer>
     <p>by BaWiX_</p>
 </footer>
-
 
 <!-- Skripty -->
 </body>
