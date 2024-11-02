@@ -1,55 +1,130 @@
 <!doctype html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8"/>
-<!--    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg"/>-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>RAMROD Encryptor/Decryptor</title>
+    <title>Encryptor/Decryptor</title>
     <link rel="stylesheet" href="/style.css">
-  <script type="module" crossorigin src="/assets/index-E6Q24ktT.js"></script>
+  <script type="module" crossorigin src="/assets/index-DS7U4eGl.js"></script>
 </head>
 <body>
-<h1>RAMROD Encryptor/Decryptor</h1>
+<header>
+    <h1>Encryptor/Decryptor</h1>
+</header>
 
-
-<label for="keyword">Keyword:</label>
-<input type="text" id="keyword" value="CHAINSMOKE">
-<br>
-<label for="number">Number or Code:</label>
-<input type="text" id="number" placeholder="Enter number or code">
-<br>
+<!-- RAMROD -->
+<section class="encryption-section">
+    <h2>RAMROD šifra</h2>
+    <div class="input-group">
+        <label for="keyword">Kľúčové slovo:</label>
+        <input type="text" id="keyword" value="CHAINSMOKE">
+    </div>
+    <div class="input-group">
+        <label for="numberOrCode">Číslo alebo kód:</label>
+        <input type="text" id="numberOrCode" placeholder="Zadajte číslo alebo kód">
+    </div>
+    <div id="ramrodResult"></div>
+    <div id="natoResult"></div>
+</section>
 <hr>
-<br>
 
-<div id="result"></div>
-<div id="natoResult"></div>
-
-<br>
+<!-- Caesarova šifra -->
+<section class="encryption-section">
+    <h2>Caesarova šifra</h2>
+    <div class="input-group">
+        <label for="caesarShift">Posun:</label>
+        <input type="number" id="caesarShift" placeholder="Zadajte hodnotu posunu" value="3">
+    </div>
+    <div class="flex-container">
+        <div class="encrypt-group">
+            <label for="caesarText">Šifrujem:</label>
+            <input type="text" id="caesarText" placeholder="Zadajte text na zašifrovanie">
+            <div id="caesarEncryptedResult"></div>
+        </div>
+        <div class="decrypt-group">
+            <label for="caesarTextDecrypt">Dešifrujem:</label>
+            <input type="text" id="caesarTextDecrypt" placeholder="Zadajte text na dešifrovanie">
+            <div id="caesarDecryptedResult"></div>
+        </div>
+    </div>
+</section>
 <hr>
-<br>
-<div id="randomWordsContainer"></div>
-<button id="newWordsBtn">Generate New Words</button>
-<br>
+
+<!-- Vigenèrova šifra -->
+<section class="encryption-section">
+    <h2>Vigenèrova šifra</h2>
+    <div class="input-group">
+        <label for="vigenereKey">Kľúč:</label>
+        <input type="text" id="vigenereKey" placeholder="Zadajte kľúčové slovo">
+    </div>
+    <div class="flex-container">
+        <div class="encrypt-group">
+            <label for="vigenereText">Šifrujem:</label>
+            <input type="text" id="vigenereText" placeholder="Zadajte text na zašifrovanie">
+            <div id="vigenereEncryptedResult"></div>
+        </div>
+        <div class="decrypt-group">
+            <label for="vigenereTextDecrypt">Dešifrujem:</label>
+            <input type="text" id="vigenereTextDecrypt" placeholder="Zadajte text na dešifrovanie">
+            <div id="vigenereDecryptedResult"></div>
+        </div>
+    </div>
+</section>
 <hr>
-<br>
-<h3>Edit Dictionary:</h3>
-<label for="slovnikTextArea"></label><textarea id="slovnikTextArea" rows="10" cols="50"></textarea>
-<br>
-<button id="updateSlovnikBtn">Update Dictionary</button>
 
-<br>
+<!-- Morseova šifra -->
+<section class="encryption-section">
+    <h2>Morseova šifra</h2>
+    <div class="flex-container">
+        <div class="encrypt-group">
+            <label for="morseText">Šifrujem:</label>
+            <input type="text" id="morseText" placeholder="Zadajte text na prevod do Morseovej abecedy">
+            <div id="morseEncryptedResult"></div>
+        </div>
+        <div class="decrypt-group">
+            <label for="morseCode">Dešifrujem:</label>
+            <input type="text" id="morseCode" placeholder="Zadajte Morseov kód na dešifrovanie">
+            <div id="morseDecryptedResult"></div>
+        </div>
+    </div>
+</section>
 <hr>
-<br>
 
-<label for="lightnessSlider">Lightness (L):</label>
-<input type="range" id="lightnessSlider" min="0" max="100" value="10">
-<br>
-<label for="chromaSlider">Chroma (C):</label>
-<input type="range" id="chromaSlider" min="0" max="1" step="0.01" value="0.3">
-<br>
-<label for="hueSlider">Hue (H):</label>
-<input type="range" id="hueSlider" min="0" max="360" value="180">
-<br>
+<!-- Slovník -->
+<section class="dictionary-section">
+    <h3>Slovník</h3>
+    <div id="randomWordsContainer"></div>
+    <button id="newWordsBtn">Generovať nové slová</button>
+    <h3>Upraviť slovník:</h3>
+    <label for="slovnikTextArea"></label>
+    <textarea id="slovnikTextArea" rows="10" cols="50"></textarea>
+    <br>
+    <button id="updateSlovnikBtn">Aktualizovať slovník</button>
+</section>
+<hr>
 
+<!-- Farba -->
+<section class="color-section">
+    <h3>Farba</h3>
+    <div class="slider-group">
+        <label for="lightnessSlider">Lightness (L):</label>
+        <input type="range" id="lightnessSlider" min="0" max="100" value="10">
+    </div>
+    <div class="slider-group">
+        <label for="chromaSlider">Chroma (C):</label>
+        <input type="range" id="chromaSlider" min="0" max="1" step="0.01" value="0.3">
+    </div>
+    <div class="slider-group">
+        <label for="hueSlider">Hue (H):</label>
+        <input type="range" id="hueSlider" min="0" max="360" value="180">
+    </div>
+</section>
+
+<footer>
+    <p>by BaWiX_</p>
+</footer>
+
+
+<!-- Skripty -->
 </body>
 </html>
